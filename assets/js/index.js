@@ -1,5 +1,4 @@
-
-
+// Function to switch between tabs
 function openTabs(evt, tabsName, classNameOne, classNameTwo) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName(classNameOne);
@@ -14,70 +13,74 @@ function openTabs(evt, tabsName, classNameOne, classNameTwo) {
     evt.currentTarget.className += " active";
 }
 
-
+// Object to keep track of input field IDs for expenses, income, and savings
 const remainID = {
     "depense": [],
     "recette": [],
     "epargne": []
-}
+};
 
+// Function to create input fields dynamically
 function sendInput(name, selfId, idParents, suffixes, remainArea) {
     remainID[remainArea].push(selfId);
     const parents = document.getElementById(idParents);
-    parents.innerHTML += `<span>${name} : <input type="number" name="${selfId}" id="${selfId}" placeholder="juste écrire le nombre"></span>${suffixes}`
+    parents.innerHTML += `<span>${name} : <input type="number" name="${selfId}" id="${selfId}" placeholder="Enter amount"></span>${suffixes}`;
 }
-// Envoie des Input dans la section Fixes de Dépenses
-sendInput("<hr>Loyer", "InputLoyer", "fixes", "<br>", "depense")
-sendInput("Charges", "InputCharges", "fixes", "<hr>", "depense")
-sendInput("Credits", "InputCredits", "fixes", "<hr>", "depense")
-sendInput("Eau", "InputEau", "fixes", "<br>", "depense")
-sendInput("Gaz", "InputGaz", "fixes", "<br>", "depense")
-sendInput("Éléctricité", "InputÉléctricité", "fixes", "<hr>", "depense")
-sendInput("Téléphone", "InputTéléphone", "fixes", "<br>", "depense")
-sendInput("Internet", "InputInternet", "fixes", "<hr>", "depense")
-sendInput("Habitation", "InputAssuranceHabitation", "fixes", "<br>", "depense")
-sendInput("Véhicules", "InputAssuranceVéhicules", "fixes", "<hr>", "depense")
-sendInput("Mutuelle Santé", "InputMutuelleSante", "fixes", "<hr>", "depense")
-sendInput("Frais Garde", "InputFraisGarde", "fixes", "<hr>", "depense")
-sendInput("Impôts Revenu", "inputImpotsRevenue", "fixes", "<br>", "depense")
-sendInput("Impôts Locaux", "inputImpotsLocaux", "fixes", "<hr>", "depense")
-// Envoie des Input dans la section Courantes de Dépenses
-sendInput("<hr>Courses", "InputCourses", "courantes", "<hr>", "depense")
-sendInput("Essence", "InputEssence", "courantes", "<br>", "depense")
-sendInput("Transport", "InputTransport", "courantes", "<hr>", "depense")
-// Envoie des Input dans la section Occasionnelles de Dépenses
-sendInput("<hr>Sortie", "InputSortie", "occasionnelles", "<hr>", "depense")
 
+// Adding input fields for Fixed Expenses
+sendInput("<hr>Loyer", "InputRent", "fixed-expenses", "<br>", "depense");
+sendInput("Charges", "InputCharges", "fixed-expenses", "<hr>", "depense");
+sendInput("Crédits", "InputCredits", "fixed-expenses", "<hr>", "depense");
+sendInput("Eau", "InputWater", "fixed-expenses", "<br>", "depense");
+sendInput("Gaz", "InputGas", "fixed-expenses", "<br>", "depense");
+sendInput("Électricité", "InputElectricity", "fixed-expenses", "<hr>", "depense");
+sendInput("Téléphone", "InputPhone", "fixed-expenses", "<br>", "depense");
+sendInput("Internet", "InputInternet", "fixed-expenses", "<hr>", "depense");
+sendInput("Assurance Habitation", "InputHomeInsurance", "fixed-expenses", "<br>", "depense");
+sendInput("Assurance Véhicules", "InputVehicleInsurance", "fixed-expenses", "<hr>", "depense");
+sendInput("Mutuelle Santé", "InputHealthInsurance", "fixed-expenses", "<hr>", "depense");
+sendInput("Frais de Garde", "InputChildcare", "fixed-expenses", "<hr>", "depense");
+sendInput("Impôts sur le Revenu", "InputIncomeTax", "fixed-expenses", "<br>", "depense");
+sendInput("Impôts Locaux", "InputLocalTax", "fixed-expenses", "<hr>", "depense");
 
+// Adding input fields for Current Expenses
+sendInput("<hr>Courses", "InputGroceries", "current-expenses", "<hr>", "depense");
+sendInput("Essence", "InputFuel", "current-expenses", "<br>", "depense");
+sendInput("Transport en Commun", "InputPublicTransport", "current-expenses", "<hr>", "depense");
 
-sendInput(`<hr>Salaire`, `InputSalaire`, `salaire`, `<hr>`, `recette`)
-sendInput(`<hr>Aide`, `InputAide`, `aides`, `<hr>`, `recette`)
-sendInput(`<hr>Rente`, `InputRente`, `rentes`, `<hr>`, `recette`)
-sendInput(`<hr>Autre`, `InputAutre`, `autres`, `<hr>`, `recette`)
+// Adding input fields for Occasional Expenses
+sendInput("<hr>Sorties", "InputOutings", "occasional-expenses", "<hr>", "depense");
 
-sendInput(`<hr>Champs Libre`, `InputLibre`, `libre`, `<hr>`, `epargne`)
+// Adding input fields for Income
+sendInput("<hr>Salaire", "InputSalary", "salary-income", "<hr>", "recette");
+sendInput("<hr>Aides", "InputAid", "aids-income", "<hr>", "recette");
+sendInput("<hr>Rentes", "InputRents", "rents-income", "<hr>", "recette");
+sendInput("<hr>Autres", "InputOthers", "other-income", "<hr>", "recette");
 
+// Adding input fields for Savings
+sendInput("<hr>Champs Libre", "InputFreeField", "free-savings", "<hr>", "epargne");
 
+// Variables to store total amounts
 let totalDepense = 0, totalRecettes = 0, totalEpargne = 0;
 
-
+// Length of each category
 let depenseLenght = remainID['depense'].length;
 let recetteLenght = remainID['recette'].length;
 let epargneLenght = remainID['epargne'].length;
 
-
+// Elements for updating results
 const buttonUpdateDepense = document.getElementById('button-update-depense');
 const buttonUpdateRecette = document.getElementById('button-update-recette');
 const buttonUpdateEpargne = document.getElementById('button-update-epargne');
+const resetButton = document.getElementById('reset-button');
 
 const areaTotalDepense = document.getElementById('totalDepense');
 const areaTotalRecette = document.getElementById('totalRecettes');
 const areaTotalEpargne = document.getElementById('totalEpargne');
 const areaTotal = document.getElementById('total');
+const alertMessage = document.getElementById('alert-message');
 
-
-const infoResultArea = document.getElementById('infoResultas');
-
+// Function to update expense total
 buttonUpdateDepense.addEventListener('click', function () {
     totalDepense = 0;
     for (let i = 0; i < depenseLenght; i++) {
@@ -85,9 +88,10 @@ buttonUpdateDepense.addEventListener('click', function () {
         totalDepense += actuallyInput;
     }
     areaTotalDepense.textContent = totalDepense + '€';
-    areaTotal.textContent = totalDepense + totalRecettes + totalEpargne + '€';
+    updateTotal();
 });
 
+// Function to update income total
 buttonUpdateRecette.addEventListener('click', function () {
     totalRecettes = 0;
     for (let i = 0; i < recetteLenght; i++) {
@@ -95,9 +99,10 @@ buttonUpdateRecette.addEventListener('click', function () {
         totalRecettes += actuallyInput;
     }
     areaTotalRecette.textContent = totalRecettes + '€';
-    areaTotal.textContent = totalDepense + totalRecettes + totalEpargne + '€';
+    updateTotal();
 });
 
+// Function to update savings total
 buttonUpdateEpargne.addEventListener('click', function () {
     totalEpargne = 0;
     for (let i = 0; i < epargneLenght; i++) {
@@ -105,5 +110,38 @@ buttonUpdateEpargne.addEventListener('click', function () {
         totalEpargne += actuallyInput;
     }
     areaTotalEpargne.textContent = totalEpargne + '€';
-    areaTotal.textContent = totalDepense + totalRecettes + totalEpargne + '€';
+    updateTotal();
 });
+
+// Function to reset all fields and totals
+resetButton.addEventListener('click', function () {
+    totalDepense = 0;
+    totalRecettes = 0;
+    totalEpargne = 0;
+    areaTotalDepense.textContent = '0€';
+    areaTotalRecette.textContent = '0€';
+    areaTotalEpargne.textContent = '0€';
+    areaTotal.textContent = '0€';
+    alertMessage.innerHTML = '';
+
+    // Reset all input fields
+    remainID['depense'].forEach(id => document.getElementById(id).value = '');
+    remainID['recette'].forEach(id => document.getElementById(id).value = '');
+    remainID['epargne'].forEach(id => document.getElementById(id).value = '');
+});
+
+// Function to update total budget and display appropriate message
+function updateTotal() {
+    const total = totalRecettes - totalDepense + totalEpargne;
+    areaTotal.textContent = total + '€';
+    alertMessage.innerHTML = '';
+
+    // Display alert message based on total
+    if (total < 0) {
+        alertMessage.innerHTML = '<div class="alert alert-danger fade-in">Budget Négatif</div>';
+    } else if (total === 0) {
+        alertMessage.innerHTML = '<div class="alert alert-warning fade-in">Budget Neutre</div>';
+    } else {
+        alertMessage.innerHTML = '<div class="alert alert-success fade-in">Budget Positif. Vous pouvez économiser ou dépenser plus!</div>';
+    }
+}
