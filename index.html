@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <title>TP-5_BUDGET</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>TP-5 BUDGET</h1>
+        </header>
+        <section id="container">
+            <!-- PARTIE RÉSULTAT -->
+            <div class="main-container">
+                <h2>RÉSULTAT</h2>
+                <h4>
+                    total :
+                    <span id="total">
+                        0€
+                    </span> (<span id="tab">
+                        dépenses :
+                        <span id="totalDepense">
+                            0€
+                        </span>
+                        | recettes :
+                        <span id="totalRecettes">
+                            0€
+                        </span>
+                        | épargne :
+                        <span id="totalEpargne">
+                            0€
+                        </span>
+                    </span>)
+                </h4>
+            </div>
+
+            <div class="tab">
+                <button class="tablinks" onclick="openTabs(event, 'depenses', 'tabcontent', 'tablinks')">DÉPENSES</button>
+                <button class="tablinks" onclick="openTabs(event, 'recettes', 'tabcontent', 'tablinks')">RECETTES</button>
+                <button class="tablinks" onclick="openTabs(event, 'epargne', 'tabcontent', 'tablinks')">ÉPARGNE</button>
+            </div>
+
+
+
+
+            <!-- PARTIE DÉPENSES -->
+            <div id="depenses" class="tabcontent main-container">
+                <h2>CALCUL DES DÉPENSES</h2>
+
+
+                <div class="tab">
+                    <button class="tablinksTableDepense" onclick="openTabs(event, 'fixes', 'tabcontentTableDepense', 'tablinksTableDepense')">FIXES</button>
+                    <button class="tablinksTableDepense" onclick="openTabs(event, 'courantes', 'tabcontentTableDepense', 'tablinksTableDepense')">COURANTES</button>
+                    <button class="tablinksTableDepense" onclick="openTabs(event, 'occasionnelles', 'tabcontentTableDepense', 'tablinksTableDepense')">OCCASIONNELLES</button>
+                    <button class="tablinksTableDepense" id="button-update-depense">mettre à jours le résultat</button>
+                </div>
+
+
+                <!-- PARTIE FIXES -->
+                <div id="fixes" class="tabcontentTableDepense main-container">
+                    <h2>DONNÉES FIXES</h2>
+                </div>
+
+
+                <!-- PARTIE COURANTES -->
+                <div id="courantes" class="tabcontentTableDepense main-container">
+                    <h2>DONNÉES COURANTES</h2>
+                </div>
+
+
+                <!-- PARTIE OCCASIONNELLES -->
+                <div id="occasionnelles" class="tabcontentTableDepense main-container">
+                    <h2>DONNÉES OCCASIONNELLES</h2>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <!-- PARTIE RECETTES -->
+            <div id="recettes" class="tabcontent main-container">
+                <h2>CALCUL DES RECETTES</h2>
+
+
+                <div class="tab">
+                    <button class="tablinksTableRecette" onclick="openTabs(event, 'salaire', 'tabcontentTableRecette', 'tablinksTableRecette')">SALAIRE</button>
+                    <button class="tablinksTableRecette" onclick="openTabs(event, 'aides', 'tabcontentTableRecette', 'tablinksTableRecette')">AIDES</button>
+                    <button class="tablinksTableRecette" onclick="openTabs(event, 'rentes', 'tabcontentTableRecette', 'tablinksTableRecette')">RENTES</button>
+                    <button class="tablinksTableRecette" onclick="openTabs(event, 'autres', 'tabcontentTableRecette', 'tablinksTableRecette')">AUTRES</button>
+                    <button class="tablinksTableDepense" id="button-update-recette">mettre à jours le résultat</button>
+                </div>
+
+
+                <!-- PARTIE SALAIRE -->
+                <div id="salaire" class="tabcontentTableRecette main-container">
+                    <h2>DONNÉES SALAIRE</h2>
+                </div>
+
+
+                <!-- PARTIE AIDES -->
+                <div id="aides" class="tabcontentTableRecette main-container">
+                    <h2>DONNÉES AIDES</h2>
+                </div>
+
+
+                <!-- PARTIE RENTES -->
+                <div id="rentes" class="tabcontentTableRecette main-container">
+                    <h2>DONNÉES RENTES</h2>
+                </div>
+
+
+                <!-- PARTIE AUTRES -->
+                <div id="autres" class="tabcontentTableRecette main-container">
+                    <h2>DONNÉES AUTRES</h2>
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!-- PARTIE ÉPARGNE -->
+            <div id="epargne" class="tabcontent main-container">
+                <h2>ÉPARGNE</h2>
+
+
+                <div class="tab">
+                    <button class="tablinksTableEpargne" onclick="openTabs(event, 'libre', 'tabcontentTableEpargne', 'tablinksTableEpargne')">CHAMPS LIBRE</button>
+                    <button class="tablinksTableDepense" id="button-update-epargne">mettre à jours le résultat</button>
+                </div>
+
+
+                <!-- PARTIE LIBRE -->
+                <div id="libre" class="tabcontentTableEpargne main-container">
+                    <h2>DONNÉES ÉPARGNE</h2>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </section>
+    </main>
+    <script src="assets/js/index.js"></script>
+</body>
+
+</html>
