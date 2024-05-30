@@ -18,13 +18,13 @@
             <div class="main-container">
                 <h2>Résultat</h2>
                 <h4>
-                    Total :
-                    <span id="total">0€</span>
-                    (<span id="tab">
-                        Dépenses : <span id="totalDepense">0€</span> |
-                        Recettes : <span id="totalRecettes">0€</span> |
-                        Épargne : <span id="totalEpargne">0€</span>
-                    </span>)
+                    Total : <span id="total">0€</span>
+                    <hr>
+                    Dépenses : <span id="totalDepense">0€</span>
+                    <hr>
+                    Recettes : <span id="totalRecettes">0€</span>
+                    <hr>
+                    Épargne : <span id="totalEpargne">0€</span>
                 </h4>
                 <div id="alert-message"></div>
                 <button id="reset-button">Reset</button>
@@ -39,7 +39,7 @@
 
             <!-- Section Dépenses -->
             <div id="depenses" class="tabcontent main-container">
-                <h2>Calcul des Dépenses</h2>
+                <h2>Dépenses</h2>
                 <div class="tab">
                     <button class="tablinksTableDepense" onclick="openTabs(event, 'fixes', 'tabcontentTableDepense', 'tablinksTableDepense')">Fixes</button>
                     <button class="tablinksTableDepense" onclick="openTabs(event, 'courantes', 'tabcontentTableDepense', 'tablinksTableDepense')">Courantes</button>
@@ -68,7 +68,7 @@
 
             <!-- Section Recettes -->
             <div id="recettes" class="tabcontent main-container">
-                <h2>Calcul des Recettes</h2>
+                <h2>Recettes</h2>
                 <div class="tab">
                     <button class="tablinksTableRecette" onclick="openTabs(event, 'salaire', 'tabcontentTableRecette', 'tablinksTableRecette')">Salaire</button>
                     <button class="tablinksTableRecette" onclick="openTabs(event, 'aides', 'tabcontentTableRecette', 'tablinksTableRecette')">Aides</button>
