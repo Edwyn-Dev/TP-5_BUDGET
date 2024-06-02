@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css">
     <title>Calculateur de Budget</title>
 </head>
-
 <body>
     <main>
         <header>
             <h1>Calculateur de Budget</h1>
         </header>
         <section id="container">
-            <!-- Section Résultat -->
+            <!-- Result Section -->
             <div class="main-container">
                 <h2>Résultat</h2>
                 <h4>
@@ -30,14 +28,14 @@
                 <button id="reset-button">Reset</button>
             </div>
 
-            <!-- Onglets de Navigation -->
+            <!-- Navigation Tabs -->
             <div class="tab">
                 <button class="tablinks" onclick="openTabs(event, 'depenses', 'tabcontent', 'tablinks')">Dépenses</button>
                 <button class="tablinks" onclick="openTabs(event, 'recettes', 'tabcontent', 'tablinks')">Recettes</button>
                 <button class="tablinks" onclick="openTabs(event, 'epargne', 'tabcontent', 'tablinks')">Épargne</button>
             </div>
 
-            <!-- Section Dépenses -->
+            <!-- Expenses Section -->
             <div id="depenses" class="tabcontent main-container">
                 <h2>Dépenses</h2>
                 <div class="tab">
@@ -47,26 +45,26 @@
                     <button class="tablinksTableDepense" id="button-update-depense">Mettre à jour le résultat</button>
                 </div>
 
-                <!-- Dépenses Fixes -->
+                <!-- Fixed Expenses -->
                 <div id="fixes" class="tabcontentTableDepense main-container">
                     <h2>Dépenses Fixes</h2>
                     <div id="fixed-expenses"></div>
                 </div>
 
-                <!-- Dépenses Courantes -->
+                <!-- Current Expenses -->
                 <div id="courantes" class="tabcontentTableDepense main-container">
                     <h2>Dépenses Courantes</h2>
                     <div id="current-expenses"></div>
                 </div>
 
-                <!-- Dépenses Occasionnelles -->
+                <!-- Occasional Expenses -->
                 <div id="occasionnelles" class="tabcontentTableDepense main-container">
                     <h2>Dépenses Occasionnelles</h2>
                     <div id="occasional-expenses"></div>
                 </div>
             </div>
 
-            <!-- Section Recettes -->
+            <!-- Income Section -->
             <div id="recettes" class="tabcontent main-container">
                 <h2>Recettes</h2>
                 <div class="tab">
@@ -77,32 +75,32 @@
                     <button class="tablinksTableDepense" id="button-update-recette">Mettre à jour le résultat</button>
                 </div>
 
-                <!-- Recettes Salaire -->
+                <!-- Salary Income -->
                 <div id="salaire" class="tabcontentTableRecette main-container">
                     <h2>Salaire</h2>
                     <div id="salary-income"></div>
                 </div>
 
-                <!-- Recettes Aides -->
+                <!-- Aid Income -->
                 <div id="aides" class="tabcontentTableRecette main-container">
                     <h2>Aides</h2>
                     <div id="aids-income"></div>
                 </div>
 
-                <!-- Recettes Rentes -->
+                <!-- Rent Income -->
                 <div id="rentes" class="tabcontentTableRecette main-container">
                     <h2>Rentes</h2>
                     <div id="rents-income"></div>
                 </div>
 
-                <!-- Autres Recettes -->
+                <!-- Other Income -->
                 <div id="autres" class="tabcontentTableRecette main-container">
                     <h2>Autres</h2>
                     <div id="other-income"></div>
                 </div>
             </div>
 
-            <!-- Section Épargne -->
+            <!-- Savings Section -->
             <div id="epargne" class="tabcontent main-container">
                 <h2>Épargne</h2>
                 <div class="tab">
@@ -110,7 +108,7 @@
                     <button class="tablinksTableDepense" id="button-update-epargne">Mettre à jour le résultat</button>
                 </div>
 
-                <!-- Champs Libre Épargne -->
+                <!-- Free Savings -->
                 <div id="libre" class="tabcontentTableEpargne main-container">
                     <h2>Champs Libre</h2>
                     <div id="free-savings"></div>
@@ -120,5 +118,4 @@
     </main>
     <script src="assets/js/index.js"></script>
 </body>
-
 </html>

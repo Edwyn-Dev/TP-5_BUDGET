@@ -1,14 +1,21 @@
 // Function to switch between tabs
 function openTabs(evt, tabsName, classNameOne, classNameTwo) {
+    // Variables to hold tab content and tab links
     let i, tabcontent, tablinks;
+
+    // Get all elements with the class name corresponding to classNameOne and hide them
     tabcontent = document.getElementsByClassName(classNameOne);
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
+
+    // Get all elements with the class name corresponding to classNameTwo and remove the "active" class
     tablinks = document.getElementsByClassName(classNameTwo);
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
+
+    // Show the current tab and add "active" class to the clicked tab link
     document.getElementById(tabsName).style.display = "block";
     evt.currentTarget.className += " active";
 }
@@ -22,7 +29,10 @@ const remainID = {
 
 // Function to create input fields dynamically
 function sendInput(name, selfId, idParents, suffixes, remainArea) {
+    // Add the input field ID to the corresponding remainArea array
     remainID[remainArea].push(selfId);
+
+    // Get the parent element by ID and append the new input field HTML
     const parents = document.getElementById(idParents);
     parents.innerHTML += `<span>${name} : <input type="number" name="${selfId}" id="${selfId}" placeholder="Enter amount"></span>${suffixes}`;
 }
@@ -60,13 +70,13 @@ sendInput("<hr>Autres", "InputOthers", "other-income", "<hr>", "recette");
 // Adding input fields for Savings
 sendInput("<hr>Champs Libre", "InputFreeField", "free-savings", "<hr>", "epargne");
 
-// Variables to store total amounts
+// Variables to store total amounts for each category
 let totalDepense = 0, totalRecettes = 0, totalEpargne = 0;
 
 // Length of each category
-let depenseLenght = remainID['depense'].length;
-let recetteLenght = remainID['recette'].length;
-let epargneLenght = remainID['epargne'].length;
+let depenseLength = remainID['depense'].length;
+let recetteLength = remainID['recette'].length;
+let epargneLength = remainID['epargne'].length;
 
 // Elements for updating results
 const buttonUpdateDepense = document.getElementById('button-update-depense');
@@ -83,7 +93,7 @@ const alertMessage = document.getElementById('alert-message');
 // Function to update expense total
 buttonUpdateDepense.addEventListener('click', function () {
     totalDepense = 0;
-    for (let i = 0; i < depenseLenght; i++) {
+    for (let i = 0; i < depenseLength; i++) {
         const actuallyInput = parseFloat(document.getElementById(remainID['depense'][i]).value || 0);
         totalDepense += actuallyInput;
     }
@@ -94,7 +104,7 @@ buttonUpdateDepense.addEventListener('click', function () {
 // Function to update income total
 buttonUpdateRecette.addEventListener('click', function () {
     totalRecettes = 0;
-    for (let i = 0; i < recetteLenght; i++) {
+    for (let i = 0; i < recetteLength; i++) {
         const actuallyInput = parseFloat(document.getElementById(remainID['recette'][i]).value || 0);
         totalRecettes += actuallyInput;
     }
@@ -105,7 +115,7 @@ buttonUpdateRecette.addEventListener('click', function () {
 // Function to update savings total
 buttonUpdateEpargne.addEventListener('click', function () {
     totalEpargne = 0;
-    for (let i = 0; i < epargneLenght; i++) {
+    for (let i = 0; i < epargneLength; i++) {
         const actuallyInput = parseFloat(document.getElementById(remainID['epargne'][i]).value || 0);
         totalEpargne += actuallyInput;
     }
@@ -132,11 +142,12 @@ resetButton.addEventListener('click', function () {
 
 // Function to update total budget and display appropriate message
 function updateTotal() {
+    // Calculate the total budget
     const total = totalRecettes - totalDepense + totalEpargne;
     areaTotal.textContent = total + '€';
     alertMessage.innerHTML = '';
 
-    // Display alert message based on total
+    // Display alert message based on the total budget
     if (total < 0) {
         alertMessage.innerHTML = '<div class="alert alert-danger fade-in">Budget Négatif</div>';
     } else if (total === 0) {
